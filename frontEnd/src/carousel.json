@@ -1,0 +1,20 @@
+{
+  "slideImages": [
+    {
+      "src": "/images/renderinImages/image.png",
+      "textHeader": "Prepare Your favourite Pizza with Ease"
+    },
+    {
+      "src": "/images/renderinImages/image2.png",
+      "textHeader": "Choose Your favourite Sauce"
+    },
+    {
+      "src": "/images/renderinImages/image3.png",
+      "textHeader": "Best Cheese to make your time great"
+    },
+    {
+      "src": "/images/renderinImages/image4.png",
+      "textHeader": "Opt From best of best Veggies"
+    }
+  ]
+}

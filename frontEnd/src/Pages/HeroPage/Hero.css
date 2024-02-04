@@ -1,0 +1,47 @@
+/* :root {
+    --base-background: #3b3838;
+    --button-color: #b71606;
+    --darken-white: #faf6f6;
+    --component-background: #555555;
+    --light-grey: #d9d9d9;
+    --gradient-color: #a85b5b;
+  }
+   */
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.hero__container {
+  background-color: var(--base-background);
+  width: 100%;
+  height: 100vh;
+}
+
+.color {
+  width: 1000px;
+  height: 1000px;
+  background-image: radial-gradient(
+    closest-side,
+    rgba(168, 91, 91, 0.5),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.first__gradient {
+  position: absolute;
+  top: -500px;
+  right: -300px;
+}
+.second__gradient {
+  position: absolute;
+  right: 500px;
+}
+
+.slide_hidden {
+  display: none;
+}
+
+.carousel {
+  display: flex;
+}

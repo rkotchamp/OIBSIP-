@@ -1,0 +1,14 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --base-background: #3b3838;
+  --button-color: #b71606;
+  --darken-white: #faf6f6;
+  --component-background: #555555;
+  --light-grey: #d9d9d9;
+  --gradient-color: rgb(168, 91, 91);
+}
