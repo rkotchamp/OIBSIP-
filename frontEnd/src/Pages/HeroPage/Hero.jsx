@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PizzaComponent from "../../components/PizzaComponent/PizzaComponent";
 import "./Hero.css";
 
 function Hero({ data }) {
@@ -57,6 +58,11 @@ function Hero({ data }) {
             </>
           );
         })}
+      </div>
+
+      <h3 className="food__choice__header">Choose your Favourite Pizza</h3>
+      <div className="food__choice__container">
+        <PizzaComponent />
       </div>
     </div>
   );

@@ -19,6 +19,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .color {
@@ -84,4 +85,19 @@ body {
 }
 .active-indicator {
   background-color: var(--button-color);
+}
+
+.food__choice__container {
+  width: 60%;
+  height: 408px;
+  background-color: var(--component-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.food__choice__header {
+  font-size: 34px;
+  color: var(--darken-white);
+  z-index: 1;
+  margin: 20px;
 }
