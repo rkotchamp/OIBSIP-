@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import PizzaComponent from "../../components/PizzaComponent/PizzaComponent";
+import { pizzaImages } from "../../pizzaDetails.json";
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import { sauceImages } from "../../sauceDetails.json";
 import "./Hero.css";
 
+const types = ["Pizza", "Sauce", "Cheese", "Veggies"];
 function Hero({ data }) {
-  const [slides, setSlides] = useState(2);
+  const [slides, setSlides] = useState(0);
+  const [choice, setChoice] = useState(0);
+  const [categoryRender, setCategoryRender] = useState(true);
 
   const nextSlides = () => {
     setSlides(slides === data.length - 1 ? 0 : slides + 1);
@@ -14,6 +20,14 @@ function Hero({ data }) {
     }, 8000);
     return () => clearInterval(intervalID);
   });
+
+  const continueSlide = () => {
+    setChoice(choice + 1);
+    types.filter;
+  };
+  const backSlide = () => {
+    setChoice(choice - 1);
+  };
 
   return (
     <div className="hero__container">
@@ -59,10 +73,43 @@ function Hero({ data }) {
           );
         })}
       </div>
-
-      <h3 className="food__choice__header">Choose your Favourite Pizza</h3>
+      {types.map((type, i) => (
+        <h3
+          className={choice === i ? "food__choice__header" : "slide_hidden"}
+          key={i}
+        >
+          Choose your Favorite {type}
+        </h3>
+      ))}
+      {/* <h3 className="food__choice__header">Choose your Favourite Pizza</h3> */}
       <div className="food__choice__container">
-        <PizzaComponent />
+        <div className="navigation__bars">
+          <button className="back__button" onClick={backSlide}>
+            <MdOutlineArrowBackIosNew /> Back
+          </button>
+          <div className="bars_container">
+            {types.map((_, i) => {
+              return (
+                <div
+                  className={choice === i ? "bars active" : "bars"}
+                  key={i}
+                ></div>
+              );
+            })}
+            {/* <div className="bars"></div>
+            <div className="bars"></div>
+            <div className="bars"></div> */}
+          </div>
+        </div>
+        <div className="foodCategory">
+          <PizzaComponent pizzaImages={pizzaImages} />
+          <PizzaComponent pizzaImages={sauceImages} />
+        </div>
+        <div className="btn__container">
+          <button className="btn" onClick={continueSlide}>
+            Continue
+          </button>
+        </div>
       </div>
     </div>
   );

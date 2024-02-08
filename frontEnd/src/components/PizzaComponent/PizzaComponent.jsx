@@ -1,25 +1,27 @@
 import "./PizzaComponent.css";
 
-function PizzaComponent() {
+function PizzaComponent({ pizzaImages }) {
+  console.log(pizzaImages);
   return (
-    <div className="pizza__container">
-      <div className="pizza__image__container">
-        <img src="" alt="" />
-      </div>
-      <div className="title__and__price">
-        <p>Quattro staggioni</p>
-        <p className="price">$5</p>
-      </div>
-      <div className="description__and__radio">
-        <p className="description">
-          Lorem ipsum dolor sit amet consectetur. Ullamcorper vivamus in lacus
-          morbi. Pulvinar quam nunc vitae at aliquet. Magna vel diam nibh enim
-          et eu. Habitant turpis nulla ultrices nisl nunc vulputate mi eu
-          euismod. Feugiat risus netus suspendisse ultricies eu aliquam in
-        </p>
-        <input type="radio" />
-      </div>
-    </div>
+    <>
+      {pizzaImages.map((pizza, i) => {
+        return (
+          <div className="pizza__container" key={i}>
+            <div className="pizza__image__container">
+              <img src={pizza.image} alt="" className="imageFood" />
+            </div>
+            <div className="title__and__price">
+              <p>{pizza.name}</p>
+              <p className="price">{pizza.price}</p>
+            </div>
+            <div className="description__and__radio">
+              <p className="description">{pizza.ingredient}</p>
+              <input type="checkbox" name={pizza.name} value={pizza.name} />
+            </div>
+          </div>
+        );
+      })}
+    </>
   );
 }
 
