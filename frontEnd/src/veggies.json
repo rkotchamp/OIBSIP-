@@ -1,0 +1,39 @@
+{
+  "veggiesImages": [
+    {
+      "id": 1,
+      "image": "/images/renderinImages/veggies1.png",
+      "name": "Tomato",
+      "ingredients": "Fresh Tomatoes",
+      "price": 1.25
+    },
+    {
+      "id": 2,
+      "image": "/images/renderinImages/veggies2.png",
+      "name": "Spinach",
+      "ingredients": "Fresh Spinach Leaves",
+      "price": 1.75
+    },
+    {
+      "id": 3,
+      "image": "/images/renderinImages/veggies3.png",
+      "name": "Bell Pepper",
+      "ingredients": "Fresh Bell Peppers",
+      "price": 1
+    },
+    {
+      "id": 4,
+      "image": "/images/renderinImages/veggies4.png",
+      "name": "Mushroom",
+      "ingredients": "Fresh Mushrooms",
+      "price": "Free"
+    },
+    {
+      "id": 5,
+      "image": "/images/renderinImages/veggies5.png",
+      "name": "Onion",
+      "ingredients": "Fresh Onions",
+      "price": 2
+    }
+  ]
+}

@@ -12,7 +12,7 @@ function PizzaComponent({ pizzaImages }) {
             </div>
             <div className="title__and__price">
               <p>{pizza.name}</p>
-              <p className="price">{pizza.price}</p>
+              <p className="price">${pizza.price}</p>
             </div>
             <div className="description__and__radio">
               <p className="description">{pizza.ingredient}</p>

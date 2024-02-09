@@ -5,35 +5,35 @@
       "image": "/images/renderinImages/Pizza1.png",
       "name": "Quattro staggioni",
       "ingredients": "Assorted Vegetables",
-      "price": "$10"
+      "price": 10
     },
     {
       "id": 2,
       "image": "/images/renderinImages/pizza2.png",
       "name": "Pepperoni Deluxe",
       "ingredients": "Pepperoni, Cheese",
-      "price": "$5"
+      "price": 5
     },
     {
       "id": 3,
       "image": "/images/renderinImages/pizza3.png",
       "name": "Classic Margherita",
       "ingredients": "Tomato, Mozzarella, Basil",
-      "price": "$16"
+      "price": 16
     },
     {
       "id": 4,
       "image": "/images/renderinImages/pizza4.png",
       "name": "Meat Lover's Special",
       "ingredients": "Sausage, Bacon, Ham",
-      "price": "$18"
+      "price": 18
     },
     {
       "id": 4,
       "image": "/images/renderinImages/pizza5.png",
       "name": "Hawaiian Delight",
       "ingredients": "Ham, Pineapple",
-      "price": "$18"
+      "price": 18
     }
   ]
 }

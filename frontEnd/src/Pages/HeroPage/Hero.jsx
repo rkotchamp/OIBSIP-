@@ -3,13 +3,17 @@ import PizzaComponent from "../../components/PizzaComponent/PizzaComponent";
 import { pizzaImages } from "../../pizzaDetails.json";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { sauceImages } from "../../sauceDetails.json";
+import { cheeseImages } from "../../cheese.json";
+import { veggiesImages } from "../../veggies.json";
+import FoodDetails from "../../components/FoodDeatils/FoodDetails";
 import "./Hero.css";
 
-const types = ["Pizza", "Sauce", "Cheese", "Veggies"];
+const types = ["Pizza", "Sauce", "Cheese", "Veggies", "Pizza Details"];
 function Hero({ data }) {
   const [slides, setSlides] = useState(0);
   const [choice, setChoice] = useState(0);
   const [categoryRender, setCategoryRender] = useState(true);
+  // const [chosenDetails, setChosenDetails] = useState({});
 
   const nextSlides = () => {
     setSlides(slides === data.length - 1 ? 0 : slides + 1);
@@ -22,11 +26,11 @@ function Hero({ data }) {
   });
 
   const continueSlide = () => {
-    setChoice(choice + 1);
+    setChoice(choice === types.length - 1 ? types.length - 1 : choice + 1);
     types.filter;
   };
   const backSlide = () => {
-    setChoice(choice - 1);
+    setChoice(choice === 0 ? 0 : choice - 1);
   };
 
   return (
@@ -78,7 +82,8 @@ function Hero({ data }) {
           className={choice === i ? "food__choice__header" : "slide_hidden"}
           key={i}
         >
-          Choose your Favorite {type}
+          {choice !== types.length - 1 ? "Choose your" : "Finalise your"}{" "}
+          Favorite {type}
         </h3>
       ))}
       {/* <h3 className="food__choice__header">Choose your Favourite Pizza</h3> */}
@@ -101,13 +106,30 @@ function Hero({ data }) {
             <div className="bars"></div> */}
           </div>
         </div>
-        <div className="foodCategory">
-          <PizzaComponent pizzaImages={pizzaImages} />
-          <PizzaComponent pizzaImages={sauceImages} />
+        <div
+          className={
+            choice === types.length - 1 ? "foodDetails" : "foodCategory"
+          }
+        >
+          {choice === 0 && <PizzaComponent pizzaImages={pizzaImages} />}
+          {/* <PizzaComponent pizzaImages={pizzaImages} /> */}
+          {choice === 1 && <PizzaComponent pizzaImages={sauceImages} />}
+          {choice === 2 && <PizzaComponent pizzaImages={cheeseImages} />}
+          {choice === 3 && <PizzaComponent pizzaImages={veggiesImages} />}
+          {choice === 4 && <FoodDetails />}
         </div>
         <div className="btn__container">
-          <button className="btn" onClick={continueSlide}>
+          <button
+            className={choice === types.length - 1 ? "hidden" : "btn"}
+            onClick={continueSlide}
+          >
             Continue
+          </button>
+          <button
+            className={choice !== types.length - 1 ? "hidden" : "btn"}
+            onClick={continueSlide}
+          >
+            finalise
           </button>
         </div>
       </div>

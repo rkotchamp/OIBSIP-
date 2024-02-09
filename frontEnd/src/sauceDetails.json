@@ -5,35 +5,35 @@
       "image": "/images/renderinImages/sauce1.png",
       "name": "Spicy Marinara",
       "ingredients": "Tomatoes, Red Pepper Flakes, Garlic",
-      "price": "$8"
+      "price": 8
     },
     {
       "id": 2,
       "image": "/images/renderinImages/sauce2.png",
       "name": "Creamy Alfredo",
       "ingredients": "Cream, Parmesan Cheese, Butter",
-      "price": "$10"
+      "price": 10
     },
     {
       "id": 3,
       "image": "/images/renderinImages/sauce3.png",
       "name": "Pesto Genovese",
       "ingredients": "Basil, Pine Nuts, Parmesan Cheese",
-      "price": "$12"
+      "price": 12
     },
     {
       "id": 4,
       "image": "/images/renderinImages/sauce4.png",
       "name": "Garlic Parmesan",
       "ingredients": "Garlic, Butter, Parmesan Cheese",
-      "price": "$9"
+      "price": 9
     },
     {
       "id": 5,
       "image": "/images/renderinImages/sauce5.png",
       "name": "Spicy Arrabbiata",
       "ingredients": "Tomatoes, Red Chili Peppers, Garlic",
-      "price": "$8"
+      "price": 8
     }
   ]
 }

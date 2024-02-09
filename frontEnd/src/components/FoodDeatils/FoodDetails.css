@@ -1,0 +1,6 @@
+.details__container {
+  width: 60%;
+  height: 271px;
+  background-color: var(--darken-white);
+  margin-bottom: 15px;
+}
