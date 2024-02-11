@@ -12,8 +12,23 @@ const types = ["Pizza", "Sauce", "Cheese", "Veggies", "Pizza Details"];
 function Hero({ data }) {
   const [slides, setSlides] = useState(0);
   const [choice, setChoice] = useState(0);
-  const [categoryRender, setCategoryRender] = useState(true);
-  // const [chosenDetails, setChosenDetails] = useState({});
+  const [chosenPizza, setChosenPizza] = useState(null);
+  const [chosenSauce, setChosenSauce] = useState(null);
+  const [chosenCheese, setChosenCheese] = useState(null);
+  const [chosenVeggies, setChosenVeggies] = useState(null);
+
+  const handleChosenPizza = (id) => {
+    setChosenPizza(id);
+  };
+  const handleChosenSauce = (id) => {
+    setChosenSauce(id);
+  };
+  const handleChosenCheese = (id) => {
+    setChosenCheese(id);
+  };
+  const handleChosenVeggies = (id) => {
+    setChosenVeggies(id);
+  };
 
   const nextSlides = () => {
     setSlides(slides === data.length - 1 ? 0 : slides + 1);
@@ -111,17 +126,60 @@ function Hero({ data }) {
             choice === types.length - 1 ? "foodDetails" : "foodCategory"
           }
         >
-          {choice === 0 && <PizzaComponent pizzaImages={pizzaImages} />}
-          {/* <PizzaComponent pizzaImages={pizzaImages} /> */}
-          {choice === 1 && <PizzaComponent pizzaImages={sauceImages} />}
-          {choice === 2 && <PizzaComponent pizzaImages={cheeseImages} />}
-          {choice === 3 && <PizzaComponent pizzaImages={veggiesImages} />}
-          {choice === 4 && <FoodDetails />}
+          {choice === 0 && (
+            <PizzaComponent
+              pizzaImages={pizzaImages}
+              onPizzaSelect={handleChosenPizza}
+            />
+          )}
+
+          {choice === 1 && (
+            <PizzaComponent
+              pizzaImages={sauceImages}
+              onPizzaSelect={handleChosenSauce}
+            />
+          )}
+          {choice === 2 && (
+            <PizzaComponent
+              pizzaImages={cheeseImages}
+              onPizzaSelect={handleChosenCheese}
+            />
+          )}
+          {choice === 3 && (
+            <PizzaComponent
+              pizzaImages={veggiesImages}
+              onPizzaSelect={handleChosenVeggies}
+            />
+          )}
+          {choice === 4 && (
+            <FoodDetails
+              pizzaId={chosenPizza}
+              sauceId={chosenSauce}
+              cheeseId={chosenCheese}
+              veggiesId={chosenVeggies}
+              pizzaData={pizzaImages}
+              sauceData={sauceImages}
+              cheeseData={cheeseImages}
+              veggiesData={veggiesImages}
+            />
+          )}
         </div>
         <div className="btn__container">
           <button
-            className={choice === types.length - 1 ? "hidden" : "btn"}
-            onClick={continueSlide}
+            className={
+              choice === types.length - 1
+                ? "hidden"
+                : choice === 0 && chosenPizza === null
+                ? "btnInactive"
+                : "btn"
+            }
+            onClick={() => {
+              if (choice === 0 && chosenPizza === null) {
+                setChoice(0);
+              } else {
+                continueSlide();
+              }
+            }}
           >
             Continue
           </button>
@@ -129,7 +187,7 @@ function Hero({ data }) {
             className={choice !== types.length - 1 ? "hidden" : "btn"}
             onClick={continueSlide}
           >
-            finalise
+            finalise details
           </button>
         </div>
       </div>

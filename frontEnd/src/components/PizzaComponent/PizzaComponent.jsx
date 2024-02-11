@@ -1,7 +1,14 @@
 import "./PizzaComponent.css";
 
-function PizzaComponent({ pizzaImages }) {
-  console.log(pizzaImages);
+function PizzaComponent({ pizzaImages, onPizzaSelect }) {
+  const checkboxChange = (e, pizza) => {
+    if (e.target.checked) {
+      onPizzaSelect(pizza.id);
+    } else {
+      onPizzaSelect(null);
+    }
+  };
+
   return (
     <>
       {pizzaImages.map((pizza, i) => {
@@ -16,7 +23,12 @@ function PizzaComponent({ pizzaImages }) {
             </div>
             <div className="description__and__radio">
               <p className="description">{pizza.ingredient}</p>
-              <input type="checkbox" name={pizza.name} value={pizza.name} />
+              <input
+                type="checkbox"
+                name={pizza.name}
+                value={pizza.name}
+                onChange={(e) => checkboxChange(e, pizza)}
+              />
             </div>
           </div>
         );

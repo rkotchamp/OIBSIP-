@@ -163,6 +163,14 @@ body {
   color: var(--darken-white);
   border-radius: 9px;
 }
+.btnInactive {
+  width: 196px;
+  height: 44px;
+  border: none;
+  background-color: var(--gradient-color);
+  color: var(--darken-white);
+  border-radius: 9px;
+}
 .hidden {
   display: none;
 }
