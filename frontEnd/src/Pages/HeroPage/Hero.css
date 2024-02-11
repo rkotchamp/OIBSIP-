@@ -89,7 +89,7 @@ body {
 
 .food__choice__container {
   width: 60%;
-  height: 408px;
+  height: 450px;
   background-color: var(--component-background);
   /* display: flex;
   justify-content: center;
@@ -152,6 +152,7 @@ body {
   width: 100%;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -170,6 +171,11 @@ body {
   background-color: var(--gradient-color);
   color: var(--darken-white);
   border-radius: 9px;
+}
+.btn__container p {
+  padding: 10px;
+
+  color: var(--button-color);
 }
 .hidden {
   display: none;

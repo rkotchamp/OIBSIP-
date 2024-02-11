@@ -5,14 +5,14 @@
       "image": "/images/renderinImages/cheese1.png",
       "name": "Mozzarella",
       "ingredients": "Milk, Salt, Enzymes",
-      "price": "1.50"
+      "price": 1.5
     },
     {
       "id": 2,
       "image": "/images/renderinImages/cheese2.png",
       "name": "Cheddar",
       "ingredients": "Milk, Salt, Enzymes",
-      "price": "$1"
+      "price": 1
     },
     {
       "id": 3,
@@ -26,14 +26,14 @@
       "image": "/images/renderinImages/cheese4.png",
       "name": "Swiss",
       "ingredients": "Milk, Salt, Enzymes",
-      "price": "2"
+      "price": 2
     },
     {
       "id": 5,
       "image": "/images/renderinImages/cheese5.png",
       "name": "Gouda",
       "ingredients": "Milk, Salt, Enzymes",
-      "price": "1.75"
+      "price": 1.75
     }
   ]
 }

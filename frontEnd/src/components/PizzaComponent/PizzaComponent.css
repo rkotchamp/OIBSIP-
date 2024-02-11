@@ -22,13 +22,17 @@
   display: flex;
   justify-content: space-between;
 }
+.title__and__price .title {
+  font-size: 16px;
+  font-weight: 600;
+}
 .description__and__radio {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .description {
-  font-size: 5px;
+  font-size: 12px;
   max-width: 131px;
 }
 

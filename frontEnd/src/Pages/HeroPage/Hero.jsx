@@ -16,6 +16,7 @@ function Hero({ data }) {
   const [chosenSauce, setChosenSauce] = useState(null);
   const [chosenCheese, setChosenCheese] = useState(null);
   const [chosenVeggies, setChosenVeggies] = useState(null);
+  const [error, setError] = useState(false);
 
   const handleChosenPizza = (id) => {
     setChosenPizza(id);
@@ -175,6 +176,7 @@ function Hero({ data }) {
             }
             onClick={() => {
               if (choice === 0 && chosenPizza === null) {
+                setError(true);
                 setChoice(0);
               } else {
                 continueSlide();
@@ -189,6 +191,7 @@ function Hero({ data }) {
           >
             finalise details
           </button>
+          {error && <p>Select at least one Pizza</p>}
         </div>
       </div>
     </div>

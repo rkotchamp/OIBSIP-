@@ -26,7 +26,7 @@
       "image": "/images/renderinImages/veggies4.png",
       "name": "Mushroom",
       "ingredients": "Fresh Mushrooms",
-      "price": "Free"
+      "price": 1.5
     },
     {
       "id": 5,

@@ -18,11 +18,11 @@ function PizzaComponent({ pizzaImages, onPizzaSelect }) {
               <img src={pizza.image} alt="" className="imageFood" />
             </div>
             <div className="title__and__price">
-              <p>{pizza.name}</p>
+              <p className="title">{pizza.name}</p>
               <p className="price">${pizza.price}</p>
             </div>
             <div className="description__and__radio">
-              <p className="description">{pizza.ingredient}</p>
+              <p className="description">{pizza.ingredients}</p>
               <input
                 type="checkbox"
                 name={pizza.name}
