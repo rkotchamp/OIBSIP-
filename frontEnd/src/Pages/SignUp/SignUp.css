@@ -1,0 +1,52 @@
+.signUp__container {
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../../public/images/renderinImages/SignUp.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 50px;
+  padding-left: 80px;
+}
+
+.form_container {
+  width: 40%;
+  height: 635px;
+  background-color: var(--component-background);
+  border-radius: 25px;
+  position: relative;
+  margin-left: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.grading {
+  width: 600px;
+  height: 600px;
+  background-image: radial-gradient(
+    closest-side,
+    rgba(168, 91, 91, 0.5),
+    rgba(0, 0, 0, 0)
+  );
+  z-index: 1;
+}
+.one__gradient {
+  position: absolute;
+  top: 0;
+  right: 900px;
+}
+.two__gradient {
+  position: absolute;
+  left: 0;
+}
+
+.signForm {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
