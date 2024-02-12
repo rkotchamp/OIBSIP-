@@ -23,7 +23,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
+}
+.form_container h1 {
+  font-size: 40px;
+  color: var(--darken-white);
+  z-index: 1;
 }
 .grading {
   width: 600px;
@@ -47,6 +52,41 @@
 
 .signForm {
   width: 100%;
-  height: 100%;
-  background-color: red;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+  /* background-color: red; */
+}
+
+.signInput {
+  width: 70%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  padding-left: 20px;
+}
+
+.signBTN {
+  width: 30%;
+  height: 50px;
+  color: var(--darken-white);
+  background-color: var(--button-color);
+  border: none;
+}
+
+.signNav p {
+  color: var(--darken-white);
+}
+.signNav .signRoutes {
+  color: var(--button-color);
+  text-decoration: none;
+}
+.signNav a {
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
 }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./SignUp.css";
 
 function SignUp() {
@@ -8,9 +9,21 @@ function SignUp() {
       <div className="form_container">
         <h1>Create Account</h1>
         <form action="" className="signForm">
-          <input type="text" placeholder="Full Name" />
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
+          <input type="text" placeholder="Full Name" className="signInput" />
+          <input type="email" placeholder="Email" className="signInput" />
+          <input type="password" placeholder="Password" className="signInput" />
+          <div className="signNav">
+            <p>
+              Already have an account?
+              <Link to="/login">
+                <span className="signRoutes">Login</span>
+              </Link>
+            </p>
+            <Link to="/forgot">
+              <p className="signRoutes">Forgot Password?</p>
+            </Link>
+          </div>
+          <button className="signBTN">Register</button>
         </form>
       </div>
     </div>
