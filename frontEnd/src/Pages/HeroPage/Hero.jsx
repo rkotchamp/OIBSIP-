@@ -6,6 +6,7 @@ import { sauceImages } from "../../sauceDetails.json";
 import { cheeseImages } from "../../cheese.json";
 import { veggiesImages } from "../../veggies.json";
 import FoodDetails from "../../components/FoodDeatils/FoodDetails";
+import { Link } from "react-router-dom";
 import "./Hero.css";
 
 const types = ["Pizza", "Sauce", "Cheese", "Veggies", "Pizza Details"];
@@ -185,12 +186,14 @@ function Hero({ data }) {
           >
             Continue
           </button>
-          <button
-            className={choice !== types.length - 1 ? "hidden" : "btn"}
-            onClick={continueSlide}
-          >
-            finalise details
-          </button>
+          <Link to="/checkout">
+            <button
+              className={choice !== types.length - 1 ? "hidden" : "btn"}
+              onClick={continueSlide}
+            >
+              Finalise Details
+            </button>
+          </Link>
           {error && <p>Select at least one Pizza</p>}
         </div>
       </div>
