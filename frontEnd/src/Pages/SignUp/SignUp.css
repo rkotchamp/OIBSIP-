@@ -68,6 +68,16 @@
   border: none;
   border-radius: 10px;
   padding-left: 20px;
+  background-color: var(--darken-white);
+}
+input[type="password"]:not(:placeholder-shown) {
+  font-family: "Work Sans", sans-serif;
+}
+
+.signInput:focus,
+.signInput:active {
+  border: 2px solid var(--button-color);
+  outline: none;
 }
 
 .signBTN {
