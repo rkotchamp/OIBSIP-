@@ -1,0 +1,32 @@
+.foodStock__container {
+  width: 25%;
+  height: 153px;
+  background-color: var(--darken-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.stocks {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.stocksAndPrices {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.stockPrice {
+  color: var(--button-color);
+}

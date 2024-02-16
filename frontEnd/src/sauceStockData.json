@@ -1,0 +1,9 @@
+{
+  "sauceStockData": [
+    {
+      "food": "Sauce",
+      "TotalSold": 5,
+      "Available": 20
+    }
+  ]
+}

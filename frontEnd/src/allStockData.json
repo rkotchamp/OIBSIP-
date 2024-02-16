@@ -1,0 +1,29 @@
+{
+  "AllStockData": [
+    {
+      "food": "Pizza",
+      "TotalSold": 5,
+      "Available": 20
+    },
+    {
+      "food": "Sauce",
+      "TotalSold": 5,
+      "Available": 20
+    },
+    {
+      "food": "Cheese",
+      "TotalSold": 5,
+      "Available": 20
+    },
+    {
+      "food": "Veggies",
+      "TotalSold": 5,
+      "Available": 20
+    },
+    {
+      "food": "Meat",
+      "TotalSold": 5,
+      "Available": 20
+    }
+  ]
+}

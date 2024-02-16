@@ -1,0 +1,9 @@
+{
+  "cheeseStockData": [
+    {
+      "food": "Cheese",
+      "TotalSold": 5,
+      "Available": 20
+    }
+  ]
+}

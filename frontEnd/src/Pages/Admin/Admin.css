@@ -70,10 +70,13 @@
   color: var(--darken-white);
 }
 .foodBtn:hover {
+  background-color: var(--foodBtnHover-backColor);
+  color: var(--darken-white);
+}
+.foodBtnActive {
   background-color: var(--button-color);
   color: var(--darken-white);
 }
-
 .adminContent h1 {
   font-size: 80px;
   color: var(--darken-white);
