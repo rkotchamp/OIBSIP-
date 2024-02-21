@@ -1,7 +1,22 @@
+const cookieParser = require("cookie-parser");
 const express = require("express");
-const app = express();
-const port = 8000;
+require("dotenv").config();
+const setupRoutes = require("./routes/index.routes");
+const { connectToDb, getDb } = require("./database/db");
 
-app.listen(port, () => {
-  console.log("Server is running ");
+const server = express();
+const port = process.env.SERVER_PORT;
+
+server.use(express.json());
+server.use(cookieParser());
+
+let db;
+setupRoutes(server);
+connectToDb((err) => {
+  if (!err) {
+    server.listen(port, () => {
+      console.log("Server is running ");
+    });
+    db = getDb();
+  }
 });
