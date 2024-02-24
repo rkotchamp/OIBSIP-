@@ -44,30 +44,45 @@
 }
 
 .render__table {
-  width: 50%;
+  width: 100%;
   height: 539px;
   background-color: var(--component-background);
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .food__table {
   width: 20%;
   height: 539px;
+
   background-color: var(--component-background);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  padding: 20px 0;
   z-index: 1;
 }
-
+.food__table .listButtons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 .foodBtn {
   width: 70%;
   height: 50px;
   background-color: var(--foodBtn-backColor);
   border: none;
   color: var(--darken-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  font-weight: 400;
 }
 .foodBtn:hover {
   background-color: var(--foodBtnHover-backColor);
@@ -81,4 +96,34 @@
   font-size: 80px;
   color: var(--darken-white);
   z-index: 1;
+}
+
+.renderedAndOrdered {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.logoutContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoutContainer .logOut {
+  /* width: 30px;
+  height: 30px; */
+  background-color: transparent;
+  border: none;
+  color: var(--gradient-color-one);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+.logoutContainer .logOut:hover {
+  color: var(--button-color);
 }

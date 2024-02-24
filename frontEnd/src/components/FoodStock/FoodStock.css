@@ -1,12 +1,39 @@
 .foodStock__container {
-  width: 25%;
-  height: 153px;
+  width: 55%;
+  height: 274px;
   background-color: var(--darken-white);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  padding: 10px;
+}
+
+.foodGrid {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+  /* background-color: red; */
+}
+.foodElements {
+  width: 100%;
+  height: 135px;
+  background-color: var(--darken-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+.foodElementsB {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .stocks {
@@ -19,6 +46,7 @@
 
 .stocksAndPrices {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

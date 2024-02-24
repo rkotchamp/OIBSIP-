@@ -6,10 +6,17 @@ import { sauceStockData } from "../../sauceStockData.json";
 import { veggiesStockData } from "../../veggiesStockData.json";
 import { meatStockData } from "../../meatStockData.json";
 import { AllStockData } from "../../allStockData.json";
+import OrderedFood from "../../components/OrderedFood/OrderedFood";
+import { MdUpdate } from "react-icons/md";
+import { MdOutlineDashboard } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
+import { MdOutlineLogout } from "react-icons/md";
+import PostFood from "../../components/PostFood/PostFood";
+import UserProfile from "../../components/userProfile/UserProfile";
 
 import "./Admin.css";
 
-const btn = ["All", "Pizza", "Sauce", "Cheese", "Veggies", "Meat"];
+const btn = ["Dashboard", "Post New Food", "Profile"];
 function Admin() {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -21,27 +28,40 @@ function Admin() {
         <h1>Admin Dashboard</h1>
         <div className="tables">
           <div className="food__table">
-            {btn.map((b, i) => {
-              return (
-                <button
-                  className={
-                    activeTab === i ? "foodBtn foodBtnActive" : "foodBtn"
-                  }
-                  key={i}
-                  onClick={() => setActiveTab(i)}
-                >
-                  {b}
-                </button>
-              );
-            })}
+            <div className="listButtons">
+              {btn.map((b, i) => {
+                return (
+                  <button
+                    className={
+                      activeTab === i ? "foodBtn foodBtnActive" : "foodBtn"
+                    }
+                    key={i}
+                    onClick={() => setActiveTab(i)}
+                  >
+                    {i === 0 && <MdOutlineDashboard className="listIcons" />}
+                    {i === 1 && <MdUpdate className="listIcons" />}
+                    {i === 2 && <FaRegUser className="listIcons" />}
+                    {b}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="logoutContainer">
+              <button className="logOut">
+                <MdOutlineLogout />
+                Logout
+              </button>
+            </div>
           </div>
-          <div className="render__table">
-            {activeTab === 0 && <FoodStock stockData={AllStockData} />}
-            {activeTab === 1 && <FoodStock stockData={PizzaStockData} />}
-            {activeTab === 2 && <FoodStock stockData={sauceStockData} />}
-            {activeTab === 3 && <FoodStock stockData={cheeseStockData} />}
-            {activeTab === 4 && <FoodStock stockData={veggiesStockData} />}
-            {activeTab === 5 && <FoodStock stockData={meatStockData} />}
+          <div className="renderedAndOrdered">
+            <div className="render__table">
+              {activeTab === 0 && (
+                <FoodStock stockData={AllStockData} activeTab={activeTab} />
+              )}
+              {activeTab === 1 && <PostFood />}
+              {activeTab === 2 && <UserProfile />}
+            </div>
+            <div className="ordered">{activeTab === 0 && <OrderedFood />}</div>
           </div>
         </div>
       </div>

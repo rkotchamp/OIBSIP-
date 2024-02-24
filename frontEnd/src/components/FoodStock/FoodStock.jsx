@@ -1,24 +1,28 @@
 import "./FoodStock.css";
 
-function FoodStock({ stockData }) {
-  console.log(stockData);
+function FoodStock({ stockData, activeTab }) {
+  console.log(activeTab);
+  // const newClassValue=stockData.find((food)=>)
   return (
-    <div className="foodStock__container">
+    <div className={activeTab === 0 ? "foodGrid" : "foodStock__container"}>
       {stockData.map((stock, i) => {
         return (
-          <>
+          <div
+            className={activeTab === 0 ? "foodElements" : "foodElementsB"}
+            key={i}
+          >
             <h4>{stock.food}</h4>
-            <div className="stocksAndPrices" key={i}>
+            <div className="stocksAndPrices">
               <span className="stocks">
-                <p>Total Pizza Sold</p>
+                <p>Total {stock.food} Sold</p>
                 <p className="stockPrice">{stock.TotalSold}</p>
               </span>
               <span className="stocks">
-                <p>Available Pizza</p>
+                <p>Available {stock.food}</p>
                 <p className="stockPrice">{stock.Available}</p>
               </span>
             </div>
-          </>
+          </div>
         );
       })}
     </div>
