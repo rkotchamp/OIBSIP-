@@ -1,3 +1,6 @@
+*:focus {
+  outline: none;
+}
 .postFoodContainer {
   width: 100%;
   height: 70%;
@@ -5,4 +8,140 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+}
+
+.postFoodContainer h3 {
+  color: var(--darken-white);
+  font-size: 25px;
+}
+/* Select styling */
+.custom-select {
+  min-width: 350px;
+  position: relative;
+}
+
+.custom-select::before,
+.custom-select::after {
+  --size: 0.3rem;
+  position: absolute;
+  content: "";
+  right: 1rem;
+  pointer-events: none;
+}
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid var(--base-background);
+  top: 40%;
+}
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid var(--base-background);
+  top: 55%;
+}
+
+.inputContents select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  font-size: 16px;
+  padding: 0.675em 6em 0.675em 1em;
+
+  background-color: var(--darken-white);
+
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  color: var(--base-background);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Textarea styling */
+.inputContents textarea {
+  appearance: none;
+  border: none;
+  width: 100%;
+  height: 100px;
+  resize: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 16px;
+}
+.inputContents textarea::-webkit-input-placeholder {
+  color: var(--base-background);
+  text-align: center;
+}
+.inputContents textarea:-moz-placeholder {
+  color: var(--base-background);
+  text-align: center;
+}
+.inputContents textarea::-moz-placeholder {
+  color: var(--base-background);
+  text-align: center;
+}
+.inputContents textarea:-ms-input-placeholder {
+  color: var(--base-background);
+  text-align: center;
+}
+
+.inputContents textarea:focus {
+  outline: none;
+  border: 2px solid var(--button-color);
+}
+.inputContents {
+  width: 50%;
+}
+
+/* File Styling */
+.file {
+  width: 0.1px;
+  height: 0.1px;
+  overflow: hidden;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+.label {
+  width: 100%;
+  height: 80px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #d9d9d9;
+  background-color: #fff;
+  border: 2px solid #d9d9d9;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Price Styling */
+.inputContents .price {
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  color: var(--base-background);
+  text-align: center;
+}
+
+.inputContents .price:focus {
+  outline: none !important;
+  border: 2px solid var(--button-color);
+}
+
+/* Button Styling */
+.form .postButton {
+  width: 30%;
+  padding: 20px;
+  margin-top: 20px;
+  /* height: 40px; */
+  border: none;
+  border-radius: 5px;
+  color: var(--darken-white);
+  background-color: var(--button-color);
+  font-size: 16px;
+  font-weight: 600;
 }

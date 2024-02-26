@@ -1,19 +1,18 @@
-import { Link } from "react-router-dom";
-import "./Login.css";
+import "./AdminLogin.css";
 
-function Login() {
+function AdminLogin() {
   return (
-    <div className="signUp__container">
+    <div className="adminLogin__container">
       <div className="grading one__gradient"></div>
       <div className="grading two__gradient"></div>
       <div className="form_container">
-        <h1>Login Account</h1>
+        <h1>Admin Login</h1>
         <form action="" className="signForm">
           <input type="email" placeholder="Email" className="signInput" />
           <input type="password" placeholder="Password" className="signInput" />
-          <div className="signNav">
+          {/* <div className="signNav">
             <p>
-              Dont have an account?{" "}
+              Don't have an account?{" "}
               <Link to="/register">
                 <span className="signRoutes">Register</span>
               </Link>
@@ -21,7 +20,7 @@ function Login() {
             <Link to="/forgot">
               <p className="signRoutes">Forgot Password?</p>
             </Link>
-          </div>
+          </div> */}
           <button className="signBTN">Login</button>
         </form>
       </div>
@@ -29,4 +28,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default AdminLogin;

@@ -1,10 +1,6 @@
 import { useState } from "react";
 import FoodStock from "../../components/FoodStock/FoodStock";
-import { PizzaStockData } from "../../PizzastockData.json";
-import { cheeseStockData } from "../../cheeseStockData.json";
-import { sauceStockData } from "../../sauceStockData.json";
-import { veggiesStockData } from "../../veggiesStockData.json";
-import { meatStockData } from "../../meatStockData.json";
+
 import { AllStockData } from "../../allStockData.json";
 import OrderedFood from "../../components/OrderedFood/OrderedFood";
 import { MdUpdate } from "react-icons/md";

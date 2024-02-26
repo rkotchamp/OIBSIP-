@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { MdAdminPanelSettings } from "react-icons/md";
 import "./SignUp.css";
 
 function SignUp() {
@@ -26,6 +27,11 @@ function SignUp() {
           <button className="signBTN">Register</button>
         </form>
       </div>
+      <Link to="/admin-login">
+        <div className="adminIcon">
+          <MdAdminPanelSettings /> <p>Admin</p>
+        </div>
+      </Link>
     </div>
   );
 }

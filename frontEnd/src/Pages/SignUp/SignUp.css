@@ -1,7 +1,7 @@
 .signUp__container {
   width: 100%;
   height: 100vh;
-  background-image: url("../../../public/images/renderinImages/SignUp.png");
+  background-image: url("/images/renderinImages/SignUp.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -10,6 +10,7 @@
   justify-content: flex-start;
   gap: 50px;
   padding-left: 80px;
+  position: relative;
 }
 
 .form_container {
@@ -99,4 +100,19 @@ input[type="password"]:not(:placeholder-shown) {
   text-decoration: none;
   font-size: 17px;
   font-weight: 600;
+}
+
+.adminIcon {
+  font-size: 30px;
+  color: var(--button-color);
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50px;
+  right: 100px;
+}
+.adminIcon:hover {
+  color: var(--darken-white);
 }
