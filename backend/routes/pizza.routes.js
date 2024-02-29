@@ -1,7 +1,7 @@
 const express = require("express");
 const pizzaRouter = express.Router();
-const PizzaController = require("../controllers/pizza.controller");
+const { getAllPizza } = require("../controllers/pizza.controller");
 
-pizzaRouter.get("/pizza", PizzaController.getAllPizza);
+pizzaRouter.get("/pizza", getAllPizza);
 
 module.exports = pizzaRouter;

@@ -1,18 +1,10 @@
-const getDb = require("../database/db");
+// const { getDb } = require("../database/db");
 
-const getAllFromPizza = () => {
-  let pizzas = [];
-  return getDb()
-    .collection("pizza")
-    .find()
-    .toArray()
-    .then(([results]) => results)
-    .catch((err) => {
-      console.error(err);
-      throw err;
-    });
-};
+// const getAllFromPizza = (email) => {
+//   const db = getDb();
+//   return db.collection("users").find({ email: `${email}` }, { email: 1 });
+// };
 
-module.exports = {
-  getAllFromPizza,
-};
+// module.exports = {
+//   getAllFromPizza,
+// };

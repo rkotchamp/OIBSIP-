@@ -1,6 +1,6 @@
 const pizzaRouter = require("./pizza.routes");
 
 const setupRoutes = (server) => {
-  server.use("/pizza", pizzaRouter);
+  server.use("/api", pizzaRouter);
 };
 module.exports = setupRoutes;

@@ -1,15 +1,9 @@
-const PizzaModels = require("../models/pizza.model");
+const { getAllFromPizza } = require("../models/pizza.model");
 
 const getAllPizza = (req, res) => {
-  console.log("it is running control");
-
-  PizzaModels.getAllFromPizza()
+  getAllFromPizza()
     .then((results) => {
-      if (results.length > 0) {
-        res.status(200).send(results);
-      } else {
-        res.status(404).send("No Pizza Found");
-      }
+      res.status(200).send(results);
     })
     .catch((err) => {
       console.error(err);
