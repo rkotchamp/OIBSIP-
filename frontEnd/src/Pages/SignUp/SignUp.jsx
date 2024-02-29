@@ -27,12 +27,13 @@ function SignUp() {
         .post("/register", body)
         .then((res) => {
           if (res) {
-            navigate("/");
+            navigate("/login");
           }
         })
         .catch((err) => {
           if (err.response) {
             console.log(err.response.data.error);
+            // i want to display error in the frontend
           }
         });
     }
@@ -62,6 +63,7 @@ function SignUp() {
             placeholder="Password"
             className="signInput"
             name="password"
+            autoComplete="off"
           />
           <div className="signNav">
             <p>
@@ -85,5 +87,4 @@ function SignUp() {
     </div>
   );
 }
-
 export default SignUp;
