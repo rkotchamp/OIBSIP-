@@ -7,7 +7,13 @@ const { connectToDb, getDb } = require("./database/db");
 const { ObjectId } = require("mongodb");
 const server = express();
 const UserModel = require("./models/user.model");
-const { verifyEmail, hashPassword } = require("./middlewares/users.middleware");
+const {
+  verifyEmail,
+  verifyEmailLogin,
+  hashPassword,
+  verifyPassword,
+} = require("./middlewares/users.middleware");
+const UserController = require("./controllers/users.controllers");
 
 const port = process.env.SERVER_PORT;
 
@@ -91,3 +97,10 @@ server.post("/register", verifyEmail, hashPassword, (req, res) => {
       res.status(500).json({ error: "User registration failed" });
     });
 });
+
+server.post(
+  "/login",
+  verifyEmailLogin,
+  verifyPassword,
+  UserController.loginUser
+);

@@ -23,6 +23,21 @@ const verifyEmail = (req, res, next) => {
     });
 };
 
+const verifyEmailLogin = (req, res, next) => {
+  UserModel.findUserByEmail(req.body.email)
+    .then((user) => {
+      if (user !== null) {
+        next();
+      } else {
+        res.status(401).json({ error: "This email is not registered" });
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: "Error fetching email" });
+    });
+};
+
 const hashPassword = (req, res, next) => {
   argon2
     .hash(req.body.password, hashingOptions)
@@ -37,7 +52,33 @@ const hashPassword = (req, res, next) => {
     });
 };
 
+const verifyPassword = (req, res, next) => {
+  UserModel.findUserByEmail(req.body.email)
+    .then((user) => {
+      if (user !== null) {
+        argon2
+          .verify(user.hashed_password, req.body.password)
+          .then((isVerified) => {
+            if (isVerified) {
+              delete user.hashed_password;
+              req.user = user;
+              next();
+            } else {
+              res.status(401).json({ error: "An Invalid Password" });
+            }
+          });
+      } else {
+        res.status(401).json({ error: "This email is not registered" });
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: "Error Retrieving user" });
+    });
+};
 module.exports = {
   verifyEmail,
   hashPassword,
+  verifyEmailLogin,
+  verifyPassword,
 };
