@@ -1,5 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { BsImage } from "react-icons/bs";
+import api from "../../api/api";
+import { storage } from "../../services/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 import "./PostFood.css";
 
 function PostFood() {
@@ -26,6 +30,7 @@ function PostFood() {
   const handleFoodSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
+
     const body = {};
     if (
       !form.get("ingredients") ||
@@ -35,7 +40,7 @@ function PostFood() {
     ) {
       setFormCheck(true);
       setFormError("Please Fill Out All Spaces");
-      console.log("Please Fill on forms o post");
+
       return;
     } else {
       for (const [key, value] of form.entries()) {
@@ -43,18 +48,17 @@ function PostFood() {
       }
       setFormCheck(false);
 
-      console.log(body);
-    }
-    // const ingredients = form.get("ingredients");
-    // const price = form.get("price");
-    // const foodType = form.get("foodType");
-    // const image = form.get("image");
-    // console.log(form.entries());
+      const imageName = body.image;
+      const imageRef = ref(storage, `${imageName.name + v4()}`);
 
-    // for (const [key, value] of form.entries()) {
-    //   body[key] = value;
-    // }
-    // console.log(body);
+      uploadBytes(imageRef, imageName)
+        .then(() => getDownloadURL(imageRef))
+        .then((url) => {
+          body.image = url;
+          console.log(body);
+          // configure and push to api after my user authentication
+        });
+    }
   };
 
   useEffect(() => {

@@ -1,7 +1,6 @@
 import "./FoodStock.css";
 
 function FoodStock({ stockData, activeTab }) {
-  console.log(activeTab);
   // const newClassValue=stockData.find((food)=>)
   return (
     <div className={activeTab === 0 ? "foodGrid" : "foodStock__container"}>
