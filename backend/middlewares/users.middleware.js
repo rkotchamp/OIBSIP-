@@ -1,5 +1,7 @@
 const UserModel = require("../models/user.model");
 const argon2 = require("argon2");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const hashingOptions = {
   type: argon2.argon2d,
@@ -76,9 +78,35 @@ const verifyPassword = (req, res, next) => {
       res.status(500).json({ error: "Error Retrieving user" });
     });
 };
+
+const verifyToken = (req, res, next) => {
+  const authorizationHeader = req.get("Authorization");
+
+  if (authorizationHeader === null) {
+    res.status(403).json({ error: "Missing authorization header" });
+  }
+
+  const [type, token] = authorizationHeader.split(" ");
+  if (type !== "Bearer") {
+    res.status(403).json({ error: "Authorisation header has no Bearer type" });
+  }
+
+  jwt.verify(token, process.env.PRIVATE_KEY, (error, decoded) => {
+    if (error) {
+      res.status(403).json({ error: "Error decoding authorization header" });
+    } else {
+      req.userId = decoded.userId;
+      req.email = decoded.email;
+
+      next();
+    }
+  });
+};
+
 module.exports = {
   verifyEmail,
   hashPassword,
   verifyEmailLogin,
   verifyPassword,
+  verifyToken,
 };

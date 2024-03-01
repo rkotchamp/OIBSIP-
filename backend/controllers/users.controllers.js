@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const UserModel = require("../models/user.model");
 
 const loginUser = (req, res) => {
   //   console.log(req.user);
@@ -16,6 +17,24 @@ const loginUser = (req, res) => {
   }
 };
 
+const getUserInfo = (req, res) => {
+  const email = req.email;
+  UserModel.findUserByEmail(email)
+    .then((results) => {
+      if (results !== null && results.email === email) {
+        delete results.hashed_password;
+        res.status(200).json({ message: "Success", data: results });
+      } else {
+        res.status(404).json({ error: "User not found" });
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: "Error retrieving user data" });
+    });
+};
+
 module.exports = {
   loginUser,
+  getUserInfo,
 };

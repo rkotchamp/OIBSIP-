@@ -12,6 +12,7 @@ const {
   verifyEmailLogin,
   hashPassword,
   verifyPassword,
+  verifyToken,
 } = require("./middlewares/users.middleware");
 const UserController = require("./controllers/users.controllers");
 
@@ -34,16 +35,7 @@ connectToDb((err) => {
     db = getDb();
   }
 });
-// setupRoutes(server);
 
-// connectToDb((err) => {
-//   if (!err) {
-//     server.listen(port, () => {
-//       console.log("Server is running ");
-//     });
-//   }
-// });
-// routes
 server.get("/pizza", (req, res) => {
   let pizzas = [];
   db.collection("pizza")
@@ -104,3 +96,5 @@ server.post(
   verifyPassword,
   UserController.loginUser
 );
+
+server.get("/user", verifyToken, UserController.getUserInfo);
