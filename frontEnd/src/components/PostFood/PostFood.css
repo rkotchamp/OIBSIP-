@@ -91,7 +91,8 @@
   border: 2px solid var(--button-color);
 }
 .inputContents {
-  width: 50%;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 /* File Styling */
@@ -108,7 +109,7 @@
   height: 80px;
   font-size: 16px;
   font-weight: 600;
-  color: #d9d9d9;
+  color: #b1b1b1;
   background-color: #fff;
   border: 2px solid #d9d9d9;
   border-radius: 5px;
@@ -125,6 +126,9 @@
   border-radius: 5px;
   color: var(--base-background);
   text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--base-background);
 }
 
 .inputContents .price:focus {
@@ -134,7 +138,7 @@
 
 /* Button Styling */
 .form .postButton {
-  width: 30%;
+  width: 100%;
   padding: 20px;
   margin-top: 20px;
   /* height: 40px; */
@@ -144,4 +148,20 @@
   background-color: var(--button-color);
   font-size: 16px;
   font-weight: 600;
+}
+
+.form .name {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  color: var(--base-background);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.form {
+  /* background-color: red; */
+  height: 100vh;
 }

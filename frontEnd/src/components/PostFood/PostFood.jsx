@@ -36,7 +36,8 @@ function PostFood() {
       !form.get("ingredients") ||
       !form.get("price") ||
       !form.get("foodType") ||
-      !form.get("image")
+      !form.get("image") ||
+      !form.get("name")
     ) {
       setFormCheck(true);
       setFormError("Please Fill Out All Spaces");
@@ -51,12 +52,33 @@ function PostFood() {
       const imageName = body.image;
       const imageRef = ref(storage, `${imageName.name + v4()}`);
 
+      const formElement = e.currentTarget;
+
       uploadBytes(imageRef, imageName)
         .then(() => getDownloadURL(imageRef))
         .then((url) => {
           body.image = url;
-          console.log(body);
+          // console.log(body);
           // configure and push to api after my user authentication
+          api
+            .post("/food", body)
+            .then((response) => {
+              if (response.status === 201) {
+                setImageSelectedText("Upload an Image");
+                setUploadIcon(true);
+                setFormCheck(false);
+                formElement.reset();
+              } else {
+                setFormCheck(true);
+                setFormError("There was an error posting food try again");
+              }
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        })
+        .catch((err) => {
+          console.error(err);
         });
     }
   };
@@ -91,6 +113,15 @@ function PostFood() {
               </option>
             </select>
           </div>
+        </div>
+        <div className="inputContents">
+          <input
+            type="text"
+            placeholder="Add your food name"
+            className="name"
+            name="name"
+            // onChange={(e) => setPrice(e.target.value)}
+          />
         </div>
         <div className="inputContents">
           <textarea

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import Cookies from "js-cookie";
+import { MdAdminPanelSettings } from "react-icons/md";
 import UserContext from "./../../Context/UserContext";
 import "./Login.css";
 
@@ -76,6 +77,11 @@ function Login() {
           {errorCheck && <p>{formError}</p>}
         </form>
       </div>
+      <Link to="/admin-login">
+        <div className="logAdminIcon">
+          <MdAdminPanelSettings /> <p>Admin</p>
+        </div>
+      </Link>
     </div>
   );
 }

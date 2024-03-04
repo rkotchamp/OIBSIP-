@@ -1,6 +1,11 @@
+import { loadStripe } from "@stripe/stripe-js";
+
 import "./Checkout.css";
 
 function Checkout() {
+  const loadPromise = loadStripe(
+    "pk_live_51OqINqDdMJ6nFPGif881OxctXJllPJbSK3SmXy3pOk2wo8Q0I5isiDLs8gbBJRoIMYF4y9UNhuAsggLHmdSlJLvB00U4VZ8lzE"
+  );
   return (
     <div className="checkout__container">
       <div className="color first__gradient"></div>
@@ -8,7 +13,7 @@ function Checkout() {
       <div className="headerAndCheckAway">
         <h1>Checkout</h1>
         <div className="checkAway">
-          <form action="" className="form">
+          <form action="" className="checkForm">
             <div className=" input__container">
               <input type="text" placeholder="Full Name" className="input" />
             </div>

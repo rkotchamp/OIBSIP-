@@ -3,7 +3,7 @@ import "./PizzaComponent.css";
 function PizzaComponent({ pizzaImages, onPizzaSelect }) {
   const checkboxChange = (e, pizza) => {
     if (e.target.checked) {
-      onPizzaSelect(pizza.id);
+      onPizzaSelect(pizza._id);
     } else {
       onPizzaSelect(null);
     }

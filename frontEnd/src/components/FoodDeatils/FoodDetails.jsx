@@ -1,3 +1,7 @@
+import { useState, useEffect, useContext } from "react";
+import { OrderedContext } from "../../Context/OrderedContext";
+import UserContext from "../../Context/UserContext";
+
 import "./FoodDetails.css";
 
 function FoodDetails({
@@ -10,15 +14,55 @@ function FoodDetails({
   cheeseData,
   veggiesData,
 }) {
-  const selectedPizza = pizzaData.find((p) => p.id === pizzaId);
-  const selectedSauce = sauceData.find((s) => s.id === sauceId);
-  const selectedCheese = cheeseData.find((c) => c.id === cheeseId);
-  const selectedVeggies = veggiesData.find((v) => v.id === veggiesId);
+  const { ordered, setOrdered } = useContext(OrderedContext);
+  const { user } = useContext(UserContext);
+  const selectedPizza = pizzaData.find((p) => p._id === pizzaId);
+  const selectedSauce = sauceData.find((s) => s._id === sauceId);
+  const selectedCheese = cheeseData.find((c) => c._id === cheeseId);
+  const selectedVeggies = veggiesData.find((v) => v._id === veggiesId);
   const totalPrice =
     (selectedCheese ? selectedCheese?.price : 0) +
     (selectedPizza ? selectedPizza.price : 0) +
     (selectedSauce ? selectedSauce?.price : 0) +
     (selectedVeggies ? selectedVeggies?.price : 0);
+
+  useEffect(() => {
+    const selectedFood = [];
+    if (user) {
+      selectedFood.push({ user: user.fullName });
+    }
+    if (selectedPizza) {
+      selectedFood.push({
+        foodType: selectedPizza.foodType,
+        price: selectedPizza.price,
+      });
+    }
+    if (selectedSauce) {
+      selectedFood.push({
+        foodType: selectedSauce.foodType,
+        price: selectedSauce.price,
+      });
+    }
+    if (selectedCheese) {
+      selectedFood.push({
+        foodType: selectedCheese.foodType,
+        price: selectedCheese.price,
+      });
+    }
+    if (selectedVeggies) {
+      selectedFood.push({
+        foodType: selectedVeggies.foodType,
+        price: selectedVeggies.price,
+      });
+    }
+    if (totalPrice) {
+      selectedFood.push({ total: totalPrice });
+    }
+    setOrdered(selectedFood);
+  }, [selectedCheese, selectedPizza, selectedSauce, selectedVeggies]);
+
+  console.log(ordered);
+  // console.log(user);
 
   return (
     <div className="details__container">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import PizzaComponent from "../../components/PizzaComponent/PizzaComponent";
 import { pizzaImages } from "../../pizzaDetails.json";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
@@ -7,10 +7,12 @@ import { cheeseImages } from "../../cheese.json";
 import { veggiesImages } from "../../veggies.json";
 import FoodDetails from "../../components/FoodDeatils/FoodDetails";
 import { Link } from "react-router-dom";
+import FoodContext from "../../Context/FoodContext";
 import "./Hero.css";
 
 const types = ["Pizza", "Sauce", "Cheese", "Veggies", "Pizza Details"];
 function Hero({ data }) {
+  // Hooks
   const [slides, setSlides] = useState(0);
   const [choice, setChoice] = useState(0);
   const [chosenPizza, setChosenPizza] = useState(null);
@@ -19,6 +21,9 @@ function Hero({ data }) {
   const [chosenVeggies, setChosenVeggies] = useState(null);
   const [error, setError] = useState(false);
 
+  const { food, setFood } = useContext(FoodContext);
+
+  // Methods
   const handleChosenPizza = (id) => {
     setChosenPizza(id);
   };
@@ -33,23 +38,67 @@ function Hero({ data }) {
   };
 
   const nextSlides = () => {
-    setSlides(slides === data.length - 1 ? 0 : slides + 1);
+    setSlides((prevSlide) =>
+      prevSlide === data.length - 1 ? 0 : prevSlide + 1
+    );
   };
   useEffect(() => {
     const intervalID = setInterval(() => {
       nextSlides();
     }, 8000);
     return () => clearInterval(intervalID);
-  });
+  }, []);
 
   const continueSlide = () => {
-    setChoice(choice === types.length - 1 ? types.length - 1 : choice + 1);
-    types.filter;
+    if (choice === 0 && chosenPizza === null) {
+      setError(true);
+      setChoice(0);
+    } else {
+      setChoice((prevChoice) =>
+        prevChoice === types.length - 1 ? types.length - 1 : prevChoice + 1
+      );
+      // types.filter;
+    }
   };
   const backSlide = () => {
-    setChoice(choice === 0 ? 0 : choice - 1);
+    setChoice((prevChoice) => (prevChoice === 0 ? 0 : prevChoice - 1));
   };
 
+  // Fetching Pizza
+  const pizza = [];
+  const pizzaFood = food.find((eachPizza) => {
+    if (eachPizza.foodType === "pizza") {
+      pizza.push(eachPizza);
+    }
+  });
+  const fetchedPizza = pizza.slice(0, 5);
+
+  // fetching Sauce
+  const sauce = [];
+  const sauceFood = food.find((eachSauce) => {
+    if (eachSauce.foodType === "sauce") {
+      sauce.push(eachSauce);
+    }
+  });
+  const fetchedSauce = sauce.slice(0, 5);
+
+  // Fetching cheese
+  const cheese = [];
+  const cheeseFood = food.find((eachCheese) => {
+    if (eachCheese.foodType === "cheese") {
+      cheese.push(eachCheese);
+    }
+  });
+  const fetchedCheese = cheese.slice(0, 5);
+
+  // Fetching Veggies
+  const veggies = [];
+  const veggiesFood = food.find((eachVeggies) => {
+    if (eachVeggies.foodType === "veggies") {
+      veggies.push(eachVeggies);
+    }
+  });
+  const fetchedVeggies = veggies.slice(0, 5);
   return (
     <div className="hero__container">
       <div className="color first__gradient"></div>
@@ -58,7 +107,7 @@ function Hero({ data }) {
         {data.map((images, i) => {
           return (
             <>
-              <div className="textHeader">
+              <div className="textHeader" key={i}>
                 <h1
                   className={
                     slides === i
@@ -72,10 +121,10 @@ function Hero({ data }) {
               <img
                 src={images.src}
                 alt=""
-                key={i}
                 className={slides === i ? "image slides" : "image slide_hidden"}
+                key={`images${i}`}
               />
-              <span className="indicators">
+              <span className="indicators" key={`outer_${i}`}>
                 {data.map((_, i) => {
                   return (
                     <button
@@ -130,26 +179,26 @@ function Hero({ data }) {
         >
           {choice === 0 && (
             <PizzaComponent
-              pizzaImages={pizzaImages}
+              pizzaImages={fetchedPizza}
               onPizzaSelect={handleChosenPizza}
             />
           )}
 
           {choice === 1 && (
             <PizzaComponent
-              pizzaImages={sauceImages}
+              pizzaImages={fetchedSauce}
               onPizzaSelect={handleChosenSauce}
             />
           )}
           {choice === 2 && (
             <PizzaComponent
-              pizzaImages={cheeseImages}
+              pizzaImages={fetchedCheese}
               onPizzaSelect={handleChosenCheese}
             />
           )}
           {choice === 3 && (
             <PizzaComponent
-              pizzaImages={veggiesImages}
+              pizzaImages={fetchedVeggies}
               onPizzaSelect={handleChosenVeggies}
             />
           )}
@@ -159,10 +208,10 @@ function Hero({ data }) {
               sauceId={chosenSauce}
               cheeseId={chosenCheese}
               veggiesId={chosenVeggies}
-              pizzaData={pizzaImages}
-              sauceData={sauceImages}
-              cheeseData={cheeseImages}
-              veggiesData={veggiesImages}
+              pizzaData={fetchedPizza}
+              sauceData={fetchedSauce}
+              cheeseData={fetchedCheese}
+              veggiesData={fetchedVeggies}
             />
           )}
         </div>
@@ -175,21 +224,14 @@ function Hero({ data }) {
                 ? "btnInactive"
                 : "btn"
             }
-            onClick={() => {
-              if (choice === 0 && chosenPizza === null) {
-                setError(true);
-                setChoice(0);
-              } else {
-                continueSlide();
-              }
-            }}
+            onClick={() => continueSlide()}
           >
             Continue
           </button>
           <Link to="/checkout">
             <button
               className={choice !== types.length - 1 ? "hidden" : "btn"}
-              onClick={continueSlide}
+              onClick={() => continueSlide()}
             >
               Finalise Details
             </button>

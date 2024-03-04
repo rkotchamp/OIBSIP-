@@ -1,1 +1,19 @@
 /* All css styles on the register page */
+body {
+  position: relative;
+}
+
+.logAdminIcon {
+  font-size: 30px;
+  color: var(--button-color);
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 100px;
+  right: 100px;
+}
+.adminIcon:hover {
+  color: var(--darken-white);
+}
