@@ -34,7 +34,11 @@ const getUserInfo = (req, res) => {
     });
 };
 
+const OrderedFood = (req, res) => {
+  const body = req.body;
+};
 module.exports = {
   loginUser,
   getUserInfo,
+  OrderedFood,
 };

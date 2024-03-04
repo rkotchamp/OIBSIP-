@@ -2,7 +2,6 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 const cors = require("cors");
-// const setupRoutes = require("./routes/index.routes");
 const { connectToDb, getDb } = require("./database/db");
 const { ObjectId } = require("mongodb");
 const server = express();
@@ -15,6 +14,7 @@ const {
   verifyToken,
 } = require("./middlewares/users.middleware");
 const UserController = require("./controllers/users.controllers");
+const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 const port = process.env.SERVER_PORT;
 
@@ -36,19 +36,22 @@ connectToDb((err) => {
   }
 });
 
-server.get("/pizza", (req, res) => {
+server.get("/food", (req, res) => {
   let pizzas = [];
   db.collection("pizza")
     .find()
-    .sort({ pizzaName: 1 })
-    .forEach((pizza) => pizzas.push(pizza))
-    .then(() => res.status(200).json(pizzas))
+    .sort({ name: 1 })
+    .forEach((pizza) => {
+      // pizza.price = parseFloat(pizza.price);
+      pizzas.push(pizza);
+    })
+    .then(() => res.status(200).json({ message: "Success", data: pizzas }))
     .catch(() =>
       res.status(500).json({ errorMess: "Error connecting to server" })
     );
 });
 
-server.get("/pizza/:id", (req, res) => {
+server.get("/food/:id", (req, res) => {
   if (ObjectId.isValid(req.params.id)) {
     db.collection("pizza")
       .findOne({ _id: new ObjectId(req.params.id) })
@@ -59,17 +62,19 @@ server.get("/pizza/:id", (req, res) => {
   }
 });
 
-server.post("/pizza", (req, res) => {
+server.post("/food", (req, res) => {
   const body = req.body;
+  body.price = parseFloat(body.price);
   db.collection("pizza")
     .insertOne(body)
     .then((response) => res.status(201).json(response))
-    .catch((err) =>
-      res.status(500).json({ error: "Data could not be fetched" })
-    );
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: "Data could not be fetched" });
+    });
 });
 
-server.delete("/pizza/:id", (req, res) => {
+server.delete("/food/:id", (req, res) => {
   if (ObjectId.isValid(req.params.id)) {
     db.collection("pizza")
       .deleteOne({ _id: new ObjectId(req.params.id) })
@@ -96,5 +101,12 @@ server.post(
   verifyPassword,
   UserController.loginUser
 );
+server.post(
+  "/admin-login",
+  verifyEmailLogin,
+  verifyPassword,
+  UserController.loginUser
+);
 
 server.get("/user", verifyToken, UserController.getUserInfo);
+server.post("/order", UserController.OrderedFood);

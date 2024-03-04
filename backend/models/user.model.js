@@ -10,7 +10,12 @@ const RegisterUser = (user) => {
   return db.collection("users").insertOne(user);
 };
 
+const Ordered = (items) => {
+  const db = getDb();
+  return db.collection("order").insertOne(items);
+};
 module.exports = {
   findUserByEmail,
   RegisterUser,
+  Ordered,
 };
